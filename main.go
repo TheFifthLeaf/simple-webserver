@@ -11,4 +11,7 @@ func main() {
 	// Initialize the server
 	fileServer := http.FileServer(http.Dir("./static"))
 
+	// Set handlers
+	http.Handle("/", fileServer)
+
 }
