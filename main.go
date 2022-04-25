@@ -40,4 +40,7 @@ func main() {
 	http.HandleFunc("/form", formHandler)
 	http.HandleFunc("/hello", helloHandler)
 
+	// Start up message
+	fmt.Printf("Starting server at port 8080\n")
+
 }
