@@ -18,6 +18,18 @@ func formHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Address = %s\n", address)
 }
 
+func helloHandler(w http.ResponseWriter, r *http.Request) {
+	if r.URL.Path != "/hello" {
+		http.Error(w, "404 not found", http.StatusNotFound)
+		return
+	}
+	if r.Method != "GET" {
+		http.Error(w, "method is not supported", http.StatusNotFound)
+		return
+	}
+	fmt.Fprintf(w, "hello!")
+}
+
 func main() {
 
 	// Initialize the server
@@ -26,5 +38,6 @@ func main() {
 	// Set handlers
 	http.Handle("/", fileServer)
 	http.HandleFunc("/form", formHandler)
+	http.HandleFunc("/hello", helloHandler)
 
 }
