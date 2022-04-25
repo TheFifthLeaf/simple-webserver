@@ -7,5 +7,8 @@ import (
 )
 
 func main() {
-	
+
+	// Initialize the server
+	fileServer := http.FileServer(http.Dir("./static"))
+
 }
